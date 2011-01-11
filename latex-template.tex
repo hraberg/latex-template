@@ -77,7 +77,7 @@ With two paragraphs.\autocite[22]{LewisOPW} Keep the paragraphs.\autocite[24--26
 \Ovalbox{Now we're switching language.}
 \end{center}
 
-\begin{listing}[H]
+\begin{listing}
   \label{lst:c}
   \caption{Hello World.}
   \begin{minted}[linenos=true]{c}
@@ -98,7 +98,16 @@ Let's read in a source file from disk:
 \begin{listing}
   \label{lst:py}
   \caption{External {\tt setup.py} file.}
-  \inputminted[linenos=true,firstnumber=5,firstline=5,lastline=10]{python}{./src/setup.py}
+  \inputminted[linenos=true,firstnumber=5,firstline=5,lastline=10]{python}{src/setup.py}
+\end{listing}
+
+We also need to be able to execute code and see the result. This could probably be turned into a command or macro:
+
+\begin{listing}
+  \label{lst:rb}
+  \caption{Executing hello\_world.rb.}
+  \inputminted{ruby}{src/hello_world.rb}
+  {\tt \input{|"ruby src/hello_world.rb"}}
 \end{listing}
 
 \FloatBarrier
