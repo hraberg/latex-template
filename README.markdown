@@ -8,8 +8,6 @@ Embedding of source code is handled by minted, which is a front for Pygmentize.
 
 [latexmk - perl script for running LaTeX](http://www.phys.psu.edu/~collins/software/latexmk-jcc/)
 
-[latex-makefile](http://code.google.com/p/latex-makefile/)
-
 [MacTex](http://www.tug.org/mactex/)
 
 [minted - Highlighted source code for LaTeX](http://code.google.com/p/minted/)
