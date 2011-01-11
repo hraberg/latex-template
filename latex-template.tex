@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+%\documentclass[journal]{IEEEtran}
+\usepackage[T1]{fontenc} % Latin1 characters
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+%\usepackage{amssymb} % Maths
+%\usepackage{epstopdf} % EPS image stufff
+
+\usepackage[colorlinks,hyperfootnotes=false]{hyperref}
+%\hypersetup{
+%    colorlinks,%
+%    citecolor=black,%
+%    filecolor=black,%
+%    linkcolor=black,%
+%    urlcolor=black
+%}
+
+\usepackage{placeins} % FloatBarrier
+\usepackage{fancybox}
+
+\usepackage{setspace}
+\doublespacing % requires \begin{listing} for minted code
+%\setlength{\parindent}{0pt}
+%\addtolength{\parskip}{0.5\baselineskip}
+
+\usepackage{minted}
+%\usemintedstyle{colorful}
+%\renewcommand\listingscaption{Code}
+\renewcommand\listoflistingscaption{List of Listings}
+%\usepackage{courier}
+
+%\usepackage[style=authortitle-icomp,natbib=true,sortcites=true,block=space]{biblatex}
+\usepackage{biblatex-chicago}
+\bibliography{bibtex-template} % ~/Library/texmf/bibtex/bib/central.bib % does not work with make
+
+%\usepackage{natbib}
+%\setcitestyle{aysep={}}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{My First \LaTeX{} Document}
+
+\author{Håkan Råberg\\
+\href{http://www.thoughtworks.com}{ThoughtWorks, Inc.}\\
+{\small hraberg@thoughtworks.com}}
+
+\begin{document}
+\begin{singlespace}
+\maketitle
+\begin{abstract}
+%\noindent
+This document isn't really about anything.
+\end{abstract}
+%\tableofcontents
+\end{singlespace}
+
+\section{Introduction}
+\marginpar{\singlespace Margin Note} Here is my first ever LaTeX document.\footnote{Check this out.}
+
+With two paragraphs.\autocite[22]{LewisOPW} Keep the paragraphs.\autocite[24--26]{LewisOPW} Some more text to ensure that we get a second line.
+
+\begin{listing}
+  \label{lst:rover}
+  \caption{Turning the Rover.}
+  \begin{minted}[gobble=2]{clojure}
+  (defn drive [rover instruction]
+    ({:M (move rover)
+      :L (turn rover :left)
+      :R (turn rover :right)} instruction))
+  \end{minted}
+\end{listing}
+
+\begin{center}
+\Ovalbox{Now we're switching language.}
+\end{center}
+
+\begin{listing}[H]
+  \label{lst:c}
+  \caption{Hello World.}
+  \begin{minted}[linenos=true]{c}
+#include <stdio.h>
+
+int main(int argc, char ** argv)
+{
+  printf("Hello world!\n");
+  return 0;
+}
+  \end{minted}
+\end{listing}
+
+\FloatBarrier
+
+Let's read in a source file from disk:
+
+\begin{listing}
+  \label{lst:py}
+  \caption{External {\tt setup.py} file.}
+  \inputminted[linenos=true,firstnumber=5,firstline=5,lastline=10]{python}{./src/setup.py}
+\end{listing}
+
+\FloatBarrier
+\singlespace
+\listoflistings
+\printbibliography[title=Works Cited]
+\end{document}  
